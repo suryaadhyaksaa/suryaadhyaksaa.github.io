@@ -1,863 +1,117 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio - Surya Adhyaksa</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
-    />
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Surya</title>
     <style>
-        /* =========================================
-           1. RESET & VARIABLES (TEMA BIRU)
-        ========================================= */
-        :root {
-            --primary-blue: #2563eb;
-            --dark-blue: #0f172a;
-            --text-black: #1e293b;
-            --text-grey: #64748b;
-            --bg-white: #ffffff;
-            --bg-light: #f8fafc;
-            --nav-height: 70px;
-            --shadow: 0 5px 20px rgba(37, 99, 235, 0.08);
-        }
-
+        /* --- 1. RESET DASAR --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-            text-decoration: none;
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-white);
-            color: var(--text-black);
-            line-height: 1.7;
-            overflow-x: hidden;
+            background-color: #1a1a1a; /* Warna gelap jaga-jaga kalau gambar tidak muncul */
+            color: white;
         }
 
-        /* Scrollbar Custom */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #93c5fd;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-blue);
-        }
-
-        /* =========================================
-           2. NAVBAR
-        ========================================= */
+        /* --- 2. NAVBAR (Bagian Atas) --- */
         nav {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Logo di kiri, Menu di kanan */
             align-items: center;
-            padding: 0 8%;
-            position: sticky;
+            padding: 20px 50px;
+            position: fixed; /* Supaya nempel terus di atas saat scroll */
+            width: 100%;
             top: 0;
-            z-index: 1000;
-            height: var(--nav-height);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: 0.3s;
+            z-index: 100; /* Supaya selalu di paling depan */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent); /* Gradasi bayangan sedikit agar tulisan terbaca */
         }
 
         .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--text-black);
-            cursor: pointer;
-        }
-
-        .logo span {
-            color: var(--primary-blue);
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border: 2px solid white; /* Kotak di sekeliling logo */
+            padding: 5px 10px;
+            border-radius: 5px; /* Sedikit melengkung sudutnya */
         }
 
         .nav-links {
-            display: flex;
             list-style: none;
+            display: flex;
+            gap: 30px; /* Jarak antar menu */
         }
 
         .nav-links a {
-            color: var(--text-grey);
-            margin-left: 30px;
+            text-decoration: none;
+            color: white;
             font-weight: 500;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            position: relative;
+            font-size: 16px;
+            transition: color 0.3s;
         }
 
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--primary-blue);
-            bottom: -4px;
-            left: 0;
-            transition: 0.3s;
+        .nav-links a:hover {
+            color: #ff4d4d; /* Warna merah saat kursor diarahkan */
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary-blue);
+        /* Menu yang sedang aktif (Beranda) berwarna merah muda seperti contoh */
+        .active {
+            color: #ff4d4d !important; 
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
+        /* --- 3. HERO SECTION (Foto Besar) --- */
+        .hero {
+            height: 100vh; /* Tinggi memenuhi 100% layar */
             width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-black);
-        }
-
-        /* =========================================
-           3. HERO SECTION
-        ========================================= */
-        #home {
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
-                url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1664&q=80");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            height: 100vh;
+            /* Ganti 'fotoku.jpg' dengan nama file fotomu yang benar di GitHub */
+            background-image: url('fotoku.jpg'); 
+            background-size: cover; /* Foto menutupi seluruh area */
+            background-position: center top; /* Fokus foto di tengah atas (wajah) */
+            
+            /* Efek Hitam Putih & Gelap */
+            filter: grayscale(100%) brightness(60%); 
+            
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+        }
+
+        /* Tulisan di tengah (Opsional, kalau mau ada teks di tengah foto) */
+        .hero-content {
             text-align: center;
-            color: white;
-            position: relative;
-        }
-
-        .hero-profile-container {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid var(--primary-blue);
-            padding: 5px;
-            margin-bottom: 20px;
-            animation: pulse-border 2s infinite;
-        }
-
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
-        }
-
-        .hero-profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        .hero-title span {
-            color: var(--primary-blue);
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .typing-text {
-            color: var(--primary-blue);
-            font-weight: 600;
-            border-right: 2px solid white;
-            padding-right: 5px;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
-
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            color: white;
-            animation: bounce 2s infinite;
-            font-size: 1.5rem;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        /* =========================================
-           4. GENERAL LAYOUT
-        ========================================= */
-        section {
-            padding: 60px 8%;
-        }
-
-        .bg-light {
-            background-color: var(--bg-light);
-        }
-
-        .section-header {
-            text-align: left;
-            margin-bottom: 30px;
-        }
-
-        .section-label {
-            color: var(--primary-blue);
-            font-weight: 700;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .section-title-big {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--text-black);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title-big::before {
-            content: "";
-            position: absolute;
-            width: 40px;
-            height: 4px;
-            background: var(--primary-blue);
-            bottom: 8px;
-            right: -50px;
-            border-radius: 2px;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        /* =========================================
-           5. CARD STYLES
-        ========================================= */
-        .card {
-            background: #fff;
-            padding: 30px 25px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(0, 0, 0, 0.02);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: var(--primary-blue);
-            transition: 0.4s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15);
-        }
-
-        .card:hover::before {
-            width: 100%;
-        }
-
-        .card-icon {
-            font-size: 2.2rem;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            transition: 0.4s;
-            display: inline-block;
-        }
-
-        .card:hover .card-icon {
-            transform: rotateY(180deg);
-        }
-
-        .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .card p {
-            color: var(--text-grey);
-            font-size: 0.9rem;
-        }
-
-        .year-badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #fff;
-            background: linear-gradient(45deg, var(--primary-blue), var(--dark-blue));
-            padding: 5px 15px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-top: 15px;
-        }
-
-        .skill-level {
-            color: var(--primary-blue);
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            margin-top: 10px;
-            display: block;
-        }
-
-        /* =========================================
-           6. ABOUT SECTION
-        ========================================= */
-        .about-container {
-            display: flex;
-            align-items: flex-start;
-            gap: 60px;
-        }
-
-        .image-frame-wrapper {
-            position: relative;
-            width: 300px;
-            height: 380px;
-            flex-shrink: 0;
-            margin: 15px;
-            transition: 0.5s;
-            cursor: pointer;
-        }
-
-        .image-frame-wrapper:hover {
-            transform: scale(1.02);
-        }
-
-        .image-frame-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-            border-radius: 4px;
-        }
-
-        .image-frame-wrapper::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 6px solid var(--text-black);
-            bottom: -15px;
-            right: -15px;
             z-index: 1;
-            transition: 0.4s;
         }
 
-        .image-frame-wrapper:hover::after {
-            bottom: -8px;
-            right: -8px;
-            border-color: var(--primary-blue);
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-description {
-            color: var(--text-grey);
-            margin-bottom: 25px;
-            text-align: justify;
-            font-size: 0.95rem;
-        }
-
-        .highlight-blue {
-            color: var(--primary-blue);
-            font-weight: 600;
-            background: rgba(37, 99, 235, 0.1);
-            padding: 0 5px;
-        }
-
-        .info-grid-new {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .info-row i {
-            width: 35px;
-            height: 35px;
-            background: #fff;
-            box-shadow: var(--shadow);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-blue);
-            font-size: 0.9rem;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: var(--text-black);
-            display: block;
-            font-size: 0.8rem;
-        }
-
-        .info-value {
-            color: var(--text-grey);
-            font-size: 0.85rem;
-        }
-
-        .btn-download {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 12px 35px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: 0.3s;
-            display: inline-block;
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-download:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
-        }
-
-        /* =========================================
-           7. CONTACT SECTION
-        ========================================= */
-        .contact-box-dark {
-            background-color: var(--dark-blue);
-            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            width: 100%;
-            padding: 50px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            border-radius: 8px;
-            transition: 0.5s;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
-        }
-
-        .contact-box-dark:hover {
-            transform: scale(1.01);
-        }
-
-        .contact-item-dark {
-            text-align: center;
-            flex: 1;
-            min-width: 180px;
-            position: relative;
-        }
-
-        .contact-item-dark h4 {
-            color: #94a3b8;
-            font-size: 0.85rem;
-            margin-bottom: 5px;
-            font-weight: 400;
-        }
-
-        .contact-item-dark p,
-        .contact-item-dark a {
-            color: white;
-            font-size: 1rem;
-            font-weight: 700;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .contact-item-dark a:hover {
-            color: var(--primary-blue);
-            transform: scale(1.1);
-        }
-
-        /* =========================================
-           8. RESPONSIVE
-        ========================================= */
-        @media (max-width: 900px) {
-            .about-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .image-frame-wrapper {
-                width: 260px;
-                height: 320px;
-                margin-bottom: 30px;
-            }
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            .contact-box-dark {
-                flex-direction: column;
-                padding: 40px 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 50px 5%;
-            }
-            .section-title-big {
-                font-size: 1.8rem;
-            }
-            .hamburger {
-                display: block;
-            }
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                display: none;
-            }
-            .nav-links.active {
-                display: flex;
-                animation: slideDown 0.3s ease forwards;
-            }
-            .nav-links a {
-                margin: 15px 0;
-                font-size: 1rem;
-            }
-            @keyframes slideDown {
-                from { opacity: 0; transform: translateY(-20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        }
     </style>
 </head>
 <body>
+
     <nav>
-        <a href="index.html" class="logo">S<span>.</span></a>
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-        <div class="nav-links">
-            <a href="#home" class="active">Beranda</a>
-            <a href="#about">Tentang</a>
-            <a href="#resume">Pendidikan</a>
-            <a href="#experience">Pencapaian</a>
-            <a href="#skills">Keahlian</a>
-            <a href="#contact">Kontak</a>
-        </div>
+        <a href="#" class="logo">SA.</a> 
+        
+        <ul class="nav-links">
+            <li><a href="#" class="active">Beranda</a></li>
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#">Ringkasan</a></li>
+            <li><a href="#">Portofolio</a></li>
+            <li><a href="#">Kontak</a></li>
+        </ul>
     </nav>
 
-    <section id="home">
-        <div class="hero-profile-container reveal">
-            <img src="fotoku3.jpg" alt="Surya Adhyaksa" class="hero-profile-img" />
-        </div>
-        <h1 class="hero-title reveal">SURYA <span>ADHYAKSA</span></h1>
-        <p class="hero-subtitle reveal">Saya <span class="typing-text"></span></p>
-        <a href="#about" class="scroll-down"><i class="fa-solid fa-angles-down"></i></a>
+    <section class="hero">
+        <div class="hero-content">
+            </div>
     </section>
 
-    <section id="about">
-        <div class="section-header reveal">
-            <span class="section-label">BIOGRAFI</span>
-            <h2 class="section-title-big">Tentang Saya</h2>
-        </div>
-        <div class="about-container">
-            <div class="image-frame-wrapper reveal">
-                <img src="fotoku.jpg" alt="foto-profil" />
-            </div>
-            <div class="about-text reveal">
-                <h3>Halo, Saya Aksa!</h3>
-                <p class="about-description">
-                    Seorang mahasiswa <span class="highlight-blue">Institut Teknologi Sumatera</span> yang
-                    antusias dalam dunia teknologi. Saya memiliki ketertarikan mendalam
-                    pada pengembangan web modern dan desain antarmuka yang intuitif.
-                    Saya bukan seorang yang pintar, bukan seorang ambis, bukan juga seorang tokoh penting.
-                    Karena pada dasarnya saya tidak suka dengan ketenaran dan popularitas. Website ini dibuat karena kegabutan selama libur.
-                </p>
-                <div class="info-grid-new">
-                    <div class="info-row">
-                        <i class="fa-solid fa-gift"></i>
-                        <div><span class="info-label">Tanggal Lahir</span><span class="info-value">05 Juli 2006</span></div>
-                    </div>
-                    <div class="info-row">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div><span class="info-label">Lokasi</span><span class="info-value">Bandar Lampung, Lampung ID</span></div>
-                    </div>
-                    <div class="info-row">
-                        <i class="fa-solid fa-user"></i>
-                        <div><span class="info-label">Umur</span><span class="info-value">20 Tahun</span></div>
-                    </div>
-                    <div class="info-row">
-                        <i class="fa-solid fa-book-open"></i>
-                        <div><span class="info-label">Hobi</span><span class="info-value">Membaca, Bermain Game</span></div>
-                    </div>
-                </div>
-                <a href="#" class="btn-download">Unduh CV <i class="fa-solid fa-download" style="margin-left: 8px"></i></a>
-            </div>
-        </div>
+    <section style="padding: 50px; height: 500px; background-color: #111;">
+        <h2>Bagian Bawah</h2>
+        <p>Scroll ke bawah untuk melihat efek navbar yang tetap di atas.</p>
     </section>
 
-    <section id="resume" class="bg-light">
-        <div class="section-header reveal">
-            <span class="section-label">AKADEMIK</span>
-            <h2 class="section-title-big">Pendidikan</h2>
-        </div>
-        <div class="grid-3">
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                <h3>ITERA</h3>
-                <p>Rekayasa Instrumentasi dan Automasi</p>
-                <span class="year-badge">2024 - Sekarang</span>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-school"></i></div>
-                <h3>SMK Telkom Lampung</h3>
-                <p>Rekayasa Perangkat Lunak</p>
-                <span class="year-badge">2021 - 2024</span>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
-                <h3>SMP N 26 B. Lampung</h3>
-                <p>Siswa</p>
-                <span class="year-badge">2018 - 2021</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <div class="section-header reveal">
-            <span class="section-label">PRESTASI</span>
-            <h2 class="section-title-big">Pencapaian</h2>
-        </div>
-        <div class="grid-3">
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>Ketua PMR Pertama</h3>
-                <p class="org-name">SMK Telkom Lampung</p>
-                <span class="year-badge">2022</span>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
-                <h3>Juara 3 Tandu Darurat Tingkat Wira</h3>
-                <p class="org-name">Tingkat Kabupaten</p>
-                <span class="year-badge">2023</span>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
-                <h3>Juara 2 Tandu Ganda Tingkat Wira</h3>
-                <p class="org-name">Tingkat Provinsi</p>
-                <span class="year-badge">2023</span>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
-                <h3>Juara 3 Pertolongan Pertama Tingkat Wira</h3>
-                <p class="org-name">Tingkat Provinsi</p>
-                <span class="year-badge">2023</span>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
-                <h3>Sekretaris Angkatan</h3>
-                <p class="org-name">Rekinsa 24</p>
-                <span class="year-badge">2024</span>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-people-group"></i></div>
-                <h3>Sekretaris Umum</h3>
-                <p class="org-name">HMIA ITERA</p>
-                <span class="year-badge">2027</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="bg-light">
-        <div class="section-header reveal">
-            <span class="section-label">SKILL</span>
-            <h2 class="section-title-big">Keahlian</h2>
-        </div>
-        <div class="grid-3">
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-brands fa-html5"></i></div>
-                <h3>HTML & CSS</h3>
-                <p>Struktur & Layouting</p>
-                <span class="skill-level">Pemula</span>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-regular fa-file-word"></i></div>
-                <h3>Microsoft Office</h3>
-                <p>Dokumentasi & Data</p>
-                <span class="skill-level">Menengah</span>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon"><i class="fa-brands fa-figma"></i></div>
-                <h3>UI/UX Design</h3>
-                <p>Figma & Prototyping</p>
-                <span class="skill-level">Pemula</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="section-header reveal">
-            <span class="section-label">CONTACT</span>
-            <h2 class="section-title-big">Hubungi Saya</h2>
-        </div>
-        <div class="contact-box-dark reveal">
-            <div class="contact-item-dark">
-                <h4>No Telp:</h4>
-                <p>+62 823-7573-5086</p>
-            </div>
-            <div class="contact-item-dark">
-                <h4>Email:</h4>
-                <p>surya.124490052@student.itera.ac.id</p>
-            </div>
-            <div class="contact-item-dark">
-                <h4>Lokasi:</h4>
-                <p>Bandar Lampung, Lampung, ID</p>
-            </div>
-            <div class="contact-item-dark">
-                <h4>Instagram :</h4>
-                <a href="https://instagram.com/sryaakxa_" target="_blank">@sryaakxa_</a>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Toggle Hamburger Menu
-        function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("active");
-        }
-
-        // Reveal Animations on Scroll
-        window.addEventListener("scroll", reveal);
-
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        reveal(); // Trigger once on load
-
-        // Typing Effect
-        const textElement = document.querySelector(".typing-text");
-        const textArray = ["Mahasiswa Aktif ITERA", "Seorang Introvert", "Penikmat Film Horor"];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function type() {
-            const current = textArray[textIndex];
-            if (isDeleting) {
-                textElement.textContent = current.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                textElement.textContent = current.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 50 : 100;
-
-            if (!isDeleting && charIndex === current.length) {
-                isDeleting = true;
-                typeSpeed = 2000; // Wait before deleting
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % textArray.length;
-                typeSpeed = 500; // Wait before typing new word
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-
-        document.addEventListener("DOMContentLoaded", type);
-
-        // Active Link on Scroll
-        window.onscroll = () => {
-            const sections = document.querySelectorAll("section");
-            const navLi = document.querySelectorAll(".nav-links a");
-            let current = "";
-
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 100) {
-                    current = section.getAttribute("id");
-                }
-            });
-
-            navLi.forEach((li) => {
-                li.classList.remove("active");
-                if (li.getAttribute("href").includes(current)) {
-                    li.classList.add("active");
-                }
-            });
-            reveal(); // Ensure reveal works on scroll
-        };
-    </script>
 </body>
 </html>
